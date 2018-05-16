@@ -1,0 +1,5 @@
+alias powershell="/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe"
+alias devenv="/mnt/c/Program\ Files\ \(x86\)/Microsoft\ Visual\ Studio/2017/Professional/Common7/IDE/devenv.exe"
+alias msbuild="/mnt/c/Program\ Files\ \(x86\)/Microsoft\ Visual\ Studio/2017/Professional/MSBuild/15.0/Bin/MSBuild.exe"
+alias ncrunch="/mnt/c/Program\ Files\ \(x86\)/Remco\ Software/NCrunch\ Console\ Tool/NCrunch.exe"
+alias explorer="/mnt/c/Windows/explorer.exe"

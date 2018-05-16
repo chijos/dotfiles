@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+if [ "${PWD:0:5}" = "/mnt/" ]; then
+	/mnt/c/Users/c.joshi/AppData/Local/Programs/Git/bin/git.exe "$@"
+else
+	/usr/bin/git "$@"
+fi

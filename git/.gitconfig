@@ -1,0 +1,49 @@
+[core]
+    editor = nvim
+[user]
+    name = Chirag Joshi
+    email = chirag85@gmail.com
+[alias]
+	# Get current branch name
+	branch-name = !git symbolic-ref --short HEAD
+
+	# Short status with branch info, untracked files
+	st = status -sbu
+
+	# Checkout
+	co = checkout
+
+	# Checkout master
+	com = checkout master
+
+	# Checkout new branch and set remote
+	cob = checkout -b
+
+	# Commit with message
+	cm = commit -m
+
+	# Pretty log command
+	lg = log --graph --pretty=format:'%C(yellow)%h%Creset -%C(green)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches --color
+
+	# Create upstream branch as chirag.joshi/<branchName>
+	pub = "!f() { \
+		if [$(git config branch.$(git branch-name).merge) = '']; then \
+			git push --set-upstream origin $(git branch-name):chirag.joshi/$(git branch-name); \
+		else \
+			git push $*; \
+		fi; \
+	}; f"
+
+	# Quick savepoint
+	qs = "!git add .; git cm \"SAVEPOINT\";git com;"
+
+	# Resume savepoint
+	rs = "!git reset --soft HEAD^; git reset HEAD -- .; git st;"
+
+	# Delete branch
+	brd = branch -d
+
+	# Force delete branch
+	brfd = branch -D
+[push]
+	default = simple
