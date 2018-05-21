@@ -45,7 +45,7 @@ fzs() {
     local solutionFilePath
 
     # allow user to interactively select solution file
-    solutionFilePath=$(fzf) &&
+    solutionFilePath=$(fzf --query=".sln$") &&
     
     # open the selected solution file
     devenv $(echo "$solutionFilePath")
