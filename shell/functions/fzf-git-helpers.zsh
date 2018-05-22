@@ -50,3 +50,16 @@ fzs() {
     # open the selected solution file
     devenv $(echo "$solutionFilePath")
 }
+
+fzsql() {
+    # define local variable
+    local sqlFilePaths
+
+    # allow user to interactively select solution file
+    IFS=$'\n' sqlFilePaths=($(fzf --query=".sql$" --multi)) &&
+    
+    [[ -n "$sqlFilePaths" ]] &&
+    
+    # open the selected solution file
+    ssms "${sqlFilePaths[@]}"
+}
