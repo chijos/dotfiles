@@ -116,4 +116,6 @@ for functionFile in $HOME/dotfiles/shell/functions/**/*.*; do
     source $functionFile
 done
 
+source $HOME/.zshrc.local
+
 alias dotfiles="/usr/bin/git -C $DOTFILES_DIR"
