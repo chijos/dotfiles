@@ -48,7 +48,7 @@ fzs() {
     solutionFilePath=$(fzf --query=".sln$") &&
     
     # open the selected solution file
-    devenv $(echo "$solutionFilePath")
+    devenv $(echo "$solutionFilePath") > /dev/null 2>&1 &
 }
 
 fzsql() {
@@ -61,5 +61,5 @@ fzsql() {
     [[ -n "$sqlFilePaths" ]] &&
     
     # open the selected solution file
-    ssms "${sqlFilePaths[@]}"
+    ssms $(echo "${sqlFilePaths[@]}") > /dev/null 2>&1 &
 }
