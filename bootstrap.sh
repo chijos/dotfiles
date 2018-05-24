@@ -18,7 +18,8 @@ sudo apt-get install -y \
     python2.7 \
     python-pip \
     python3 \
-    python3-pip
+    python3-pip \
+    most
 
 # nodejs
 curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -

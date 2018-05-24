@@ -6,6 +6,7 @@ export PATH=$PATH:/mnt/c/DevTools
 export ZSH=$HOME/.oh-my-zsh
 
 export SHELL=$(which zsh)
+export PAGER=$(which most)
 export DOTFILES_DIR=$HOME/dotfiles
 
 # Set name of the theme to load. Optionally, if you set this to "random"
