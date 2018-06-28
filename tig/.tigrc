@@ -1,0 +1,14 @@
+# General settings
+set tab-size = 4
+set ignore-case = true
+set refresh-mode = periodic
+set refresh-interval = 1
+set mouse = true
+set mouse-scroll = true
+set diff-context = 5
+
+# Main View settings
+set main-view = line-number:yes,interval:1 id:yes date:local author:full commit-title:yes,graph:yes,refs:yes
+
+# Colors
+color cursor black green

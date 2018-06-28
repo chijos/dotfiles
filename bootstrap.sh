@@ -85,6 +85,7 @@ ln -s $DOTFILES_DIR/shell/.zshrc $HOME/.zshrc
 ln -s $DOTFILES_DIR/vim/.vimrc $HOME/.vimrc
 ln -s $DOTFILES_DIR/nvim/init.vim $HOME/.config/nvim/init.vim
 ln -s $DOTFILES_DIR/tmux/.tmux.conf $HOME/.tmux.conf
+ln -s $DOTFILES_DIR/tig/.tigrc $HOME/.tigrc
 # }}}
 
 # Trigger install of all neovim plugins -----------------------------{{{
