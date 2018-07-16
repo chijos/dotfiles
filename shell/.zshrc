@@ -117,6 +117,8 @@ for functionFile in $HOME/dotfiles/shell/functions/**/*.*; do
     source $functionFile
 done
 
+source $DOTFILES_DIR/shell/theme/gruvbox_256palette.sh
+
 source $HOME/.zshrc.local
 
 alias dotfiles="/usr/bin/git -C $DOTFILES_DIR"
