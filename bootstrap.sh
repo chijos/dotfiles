@@ -77,6 +77,9 @@ cp $HOME/.vim/autoload/plug.vim $HOME/.local/share/nvim/site/autoload/
 
 # tmux --------------------------------------------------------------{{{
 sh $DOTFILES_DIR/install/tmux.sh
+
+# tmux plugin manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # }}}
 
 # Symlink dotfiles --------------------------------------------------{{{
