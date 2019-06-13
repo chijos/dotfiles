@@ -8,6 +8,7 @@ export ZSH=$HOME/.oh-my-zsh
 export SHELL=$(which zsh)
 export PAGER=$(which most)
 export DOTFILES_DIR=$HOME/dotfiles
+export EDITOR=$(which nvim)
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -70,6 +71,8 @@ plugins=(
   git zsh-syntax-highlighting zsh-autosuggestions
 )
 
+ZSH_DISABLE_COMPFIX=true
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -100,7 +103,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-for aliasFile in $HOME/dotfiles/shell/aliases/**/*.*; do
+for aliasFile in $DOTFILES_DIR/shell/aliases/**/*.*; do
     source $aliasFile
 done
 
@@ -109,16 +112,17 @@ autoload -U promptinit; promptinit
 prompt pure
 
 # fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # source ~/.zsh/functions/fzf-git.zsh
 
 # functions
-for functionFile in $HOME/dotfiles/shell/functions/**/*.*; do
+for functionFile in $DOTFILES_DIR/shell/functions/**/*.*; do
     source $functionFile
 done
 
-source $DOTFILES_DIR/shell/theme/gruvbox_256palette.sh
-
-source $HOME/.zshrc.local
-
 alias dotfiles="/usr/bin/git -C $DOTFILES_DIR"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

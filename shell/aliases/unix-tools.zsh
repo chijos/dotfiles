@@ -1,1 +1,2 @@
-alias lsc="ls -a --color"
+alias ls="ls -act --color"
+alias tail="tail ---disable-inotify -f"

@@ -45,7 +45,10 @@ fzs() {
     local solutionFilePath
 
     # allow user to interactively select solution file
-    solutionFilePath=$(fzf --query=".sln$") &&
+    solutionFilePath=$(fzf --query=".sln$ ") &&
+
+    # log the selected solution file
+    echo "Launching $solutionFilePath" &&
     
     # open the selected solution file
     devenv $(echo "$solutionFilePath") > /dev/null 2>&1 &
@@ -62,4 +65,33 @@ fzsql() {
     
     # open the selected solution file
     ssms $(echo "${sqlFilePaths[@]}") > /dev/null 2>&1 &
+}
+
+fzlog() {
+    # define local variables
+    local fileItems fileItem logFileFullName logName
+
+    # grab all the log file paths in the directory
+    fileItems=$(ls -ctRl --color=never | awk '{print $6, $7, $8, $9}') &&
+
+	# allow user to interactively select a branch from that
+	fileItem=$(echo "$fileItems" \
+		| fzf --no-sort --no-multi --exact --preview-window bottom:60% \
+        --preview 'tail -n 20 $(awk "{print \$4}" <<< {})') &&
+
+    # grab a name for the log file to use for labelling the tmux pane
+    logFileFullName=$(echo $fileItem | awk '{print $4}') &&
+    logName="${${${${logFileFullName/Orbis./}/OPS./}/.log/}/.txt/}"
+
+    # start tailing file
+    if [ "$TERM" = "tmux-256color" ] && [ -n "$TMUX" ]; then
+        tmux new-window -n $logName "tail ---disable-inotify -f $logFileFullName"
+    else
+        # log the file name that was selected
+        tput setaf 1 && # change output color
+        echo "TAILING: $logFileFullName" &&
+        tput sgr0 && # reset output color
+        
+        tail -f $logFileFullName
+    fi
 }
