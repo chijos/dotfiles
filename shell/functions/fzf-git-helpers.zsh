@@ -59,15 +59,16 @@ fzsql() {
     local sqlFilePaths
 
     # allow user to interactively select solution file
-    IFS=$'\n' sqlFilePaths=($(fzf --query=".sql$" --multi)) &&
-    
+    #IFS=$'\n' sqlFilePaths=($(fzf --query=".sql$" --multi)) &&
+    IFS=$'\n' sqlFilePaths=($(fzf --query=".sql$ " --multi --preview-window right:70% --preview 'bat --style=numbers --color=always {}')) && 
+
     [[ -n "$sqlFilePaths" ]] &&
     
     # open the selected solution file
     ssms $(echo "${sqlFilePaths[@]}") > /dev/null 2>&1 &
 }
 
-fzlog() {
+fzl() {
     # define local variables
     local fileItems fileItem logFileFullName logName
 
@@ -81,17 +82,19 @@ fzlog() {
 
     # grab a name for the log file to use for labelling the tmux pane
     logFileFullName=$(echo $fileItem | awk '{print $4}') &&
-    logName="${${${${logFileFullName/Orbis./}/OPS./}/.log/}/.txt/}"
+
+    logName="${${${${logFileFullName/Orbis./}/OPS./}/.log/}/.txt/}" &&
 
     # start tailing file
     if [ "$TERM" = "tmux-256color" ] && [ -n "$TMUX" ]; then
         tmux new-window -n $logName "tail ---disable-inotify -f $logFileFullName"
+        #tmux split-pane -h -p 80 "tail ---disable-inotify -f $logFileFullName"
     else
         # log the file name that was selected
         tput setaf 1 && # change output color
         echo "TAILING: $logFileFullName" &&
         tput sgr0 && # reset output color
         
-        tail -f $logFileFullName
+        tail ---disable-inotify -f $logFileFullName
     fi
 }
