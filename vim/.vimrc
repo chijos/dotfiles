@@ -74,17 +74,16 @@ call plug#begin('~/.vim/plugged')
 
 " themes / colorschemes
 Plug 'vim-airline/vim-airline'
-Plug 'whatyouhide/vim-gotham'
+Plug 'hzchirs/vim-material'
 Plug 'ryanoasis/vim-devicons'
 
 " editor
 Plug 'scrooloose/nerdtree'
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'Shougo/denite.nvim'
 
-" writing
-Plug 'reedes/vim-wordy'
+" miscellaneous
+Plug 'mhinz/vim-startify'
 
 call plug#end()
 " }}}
@@ -94,7 +93,7 @@ call plug#end()
 " >> vim-airline ----------------------------------------{{{
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='gotham'
+let g:airline_theme='material'
 " }}}
 
 " >> NERDTree -------------------------------------------{{{
@@ -102,6 +101,7 @@ nnoremap <Leader>b :NERDTreeToggle<CR>
 " }}}
 
 " >> fzf ------------------------------------------------{{{
+nnoremap <c-b> :Buffers<CR>
 nnoremap <c-t> :Files<CR>
 nnoremap <c-t><c-g> :GFiles?<CR>
 " }}}
@@ -115,7 +115,9 @@ if (has("termguicolors"))
     set termguicolors
 endif
 
-colorscheme gotham
+let g:material_style='oceanic'
+set background=dark
+colorscheme vim-material
 syntax enable
 filetype plugin indent on
 
