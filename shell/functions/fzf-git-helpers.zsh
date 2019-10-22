@@ -54,6 +54,20 @@ fzs() {
     devenv $(echo "$solutionFilePath") > /dev/null 2>&1 &
 }
 
+fzr() {
+    # define local variable
+    local solutionFilePath
+
+    # allow user to interactively select solution file
+    solutionFilePath=$(fzf --query=".sln$ ") &&
+
+    # log the selected solution file
+    echo "Launching $solutionFilePath" &&
+    
+    # open the selected solution file
+    rider $(echo "$solutionFilePath") > /dev/null 2>&1 &
+}
+
 fzsql() {
     # define local variable
     local sqlFilePaths
