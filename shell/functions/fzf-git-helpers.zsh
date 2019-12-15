@@ -11,7 +11,7 @@ fzb() {
 	local branches branch
 
 	# set branches to the output of "git branch -a"
-	branches=$(git branch -a) &&
+	branches=$(git branch -a --color=never) &&
 
 	# allow user to interactively select a branch from that
 	branch=$(echo "$branches" \
